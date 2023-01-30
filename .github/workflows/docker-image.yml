@@ -43,6 +43,7 @@ jobs:
         path: workflow
       
     - name: Copy Dockerfile
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.force
       uses: canastro/copy-file-action@master
       with:
         source: "workflow/docker/Dockerfile"
